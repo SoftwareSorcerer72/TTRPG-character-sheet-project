@@ -11,7 +11,7 @@ const Login: React.FC = () => {
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault();
     try {
-      const response = await axios.post('https://ttrpg-character-sheet-project.onrender.com/login', { email, password });
+      const response = await axios.post('http://localhost:5000/login', { email, password });
       localStorage.setItem('token', response.data.access_token);
       navigate('/');
     } catch (error) {

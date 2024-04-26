@@ -9,7 +9,7 @@ const Dashboard: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get('https://ttrpg-character-sheet-project.onrender.com/character', {
+      const result = await axios.get('http://localhost:5000/character', {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setCharacterSheets(result.data);

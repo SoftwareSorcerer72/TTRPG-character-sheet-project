@@ -20,7 +20,7 @@ const EditCharacterSheet: React.FC = () => {
 
   const handleSave = async () => {
     try {
-      await axios.put(`https://ttrpg-character-sheet-project.onrender.com/character/${id}`, character, {
+      await axios.put(`http://localhost:5000/character/${id}`, character, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       navigate(`/character-sheet/${id}`);

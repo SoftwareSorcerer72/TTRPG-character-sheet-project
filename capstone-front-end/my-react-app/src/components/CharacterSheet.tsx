@@ -11,7 +11,7 @@ const CharacterSheet: React.FC = () => {
 
   useEffect(() => {
     const fetchCharacter = async () => {
-      const result = await axios.get(`https://ttrpg-character-sheet-project.onrender.com/character/${id}`, {
+      const result = await axios.get(`http://localhost:5000/character/${id}`, {
         headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
       });
       setCharacter(result.data);
