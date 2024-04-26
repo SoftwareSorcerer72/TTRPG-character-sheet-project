@@ -26,7 +26,7 @@ const Login: React.FC = () => {
         <Typography variant="h6" sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)', marginBottom: '10px' }}>Login</Typography>
         <TextField label="Email" type="email" fullWidth required value={email} onChange={e => setEmail(e.target.value)} sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)', marginBottom: '10px' }} />
         <TextField label="Password" type="password" fullWidth required value={password} onChange={e => setPassword(e.target.value)} sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)', marginBottom: '10px' }} />
-        <Button type="submit" color="primary" variant="contained" sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)' }}>Login</Button>
+        <Button type="submit" color="primary" variant="contained" sx={{ backgroundColor: 'purple', '&:hover': { backgroundColor: 'rgb(70, 130, 180)' } }}>Login</Button>
       </form>
     </Container>
   );

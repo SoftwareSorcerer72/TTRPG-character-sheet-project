@@ -8,6 +8,7 @@ import CharacterSheet from './components/CharacterSheet';
 import EditUser from './components/EditUser';
 import AddCharacterSheet from './components/AddCharacterSheet';
 import NavBar from './components/NavBar';
+import EditCharacterSheet from './components/EditCharacterSheet'; // import the EditCharacterSheet component
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/character-sheet/:id" element={<CharacterSheet />} />
+        <Route path="/edit-character-sheet/:id" element={<EditCharacterSheet />} />
         <Route path="/edit-user" element={<EditUser />} />
         <Route path="/add-character-sheet" element={<AddCharacterSheet />} />
       </Routes>
