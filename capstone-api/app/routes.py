@@ -57,18 +57,16 @@ def register_routes(app):
     @jwt_required()
     def create_character():
         user_id = get_jwt_identity()
-        data = request.get_json().get('data')
-    
+        data = request.get_json()
+        if data is None:
+            return jsonify({'message': 'Invalid request body'}), 400
         skills_data = data.pop('skills', [])
         new_character = CharacterSheet(user_id=user_id, **data)
-    
         db.session.add(new_character)
         db.session.commit()
-    
         skills = [Skill(character_sheet_id=new_character.id, **skill_data) for skill_data in skills_data]
         db.session.add_all(skills)
         db.session.commit()
-    
         return jsonify({'message': 'Character sheet created'}), 201
 
     @app.route('/character', methods=['GET'])
@@ -77,13 +75,26 @@ def register_routes(app):
         user_id = get_jwt_identity()
         characters = CharacterSheet.query.filter_by(user_id=user_id).all()
         return jsonify([char.to_dict() for char in characters]), 200
+    
+    @app.route('/character/<int:id>', methods=['GET'])
+    @jwt_required()
+    def get_character(id):
+        user_id = get_jwt_identity()
+        character = CharacterSheet.query.filter_by(user_id=user_id, id=id).first()
+        if character is None:
+            return jsonify({'message': 'Character not found'}), 404
+        return jsonify(character.to_dict()), 200
+
+
 
     @app.route('/character/<int:character_id>', methods=['PUT'])
     @jwt_required()
     def edit_character(character_id):
         character = CharacterSheet.query.get(character_id)
         data = request.get_json()
-        character.data = data['data']
+        if data is None:
+            return jsonify({'message': 'Invalid request body'}), 400
+        character.data = data
         db.session.commit()
         return jsonify({'message': 'Character sheet updated'}), 200
 
