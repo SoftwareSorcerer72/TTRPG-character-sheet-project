@@ -8,7 +8,7 @@ import CharacterSheet from './components/CharacterSheet';
 import EditUser from './components/EditUser';
 import AddCharacterSheet from './components/AddCharacterSheet';
 import NavBar from './components/NavBar';
-import EditCharacterSheet from './components/EditCharacterSheet'; // import the EditCharacterSheet component
+import EditCharacterSheet from './components/EditCharacterSheet'; 
 
 const App: React.FC = () => {
   return (

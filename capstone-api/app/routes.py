@@ -97,6 +97,7 @@ def register_routes(app):
         character.data = data
         db.session.commit()
         return jsonify({'message': 'Character sheet updated'}), 200
+    
 
     @app.route('/character/<int:character_id>', methods=['DELETE'])
     @jwt_required()

@@ -29,9 +29,9 @@ const EditCharacterSheet: React.FC = () => {
     }
   };
 
-  const handleChange = (key: string, value: string | number) => {
-    setCharacter((prevState: any) => ({ ...prevState, [key]: value }));
-  };
+ const handleChange = (name: string, value: string | number) => {
+  setCharacter((prev: Record<string, unknown>) => ({ ...prev, [name]: value }));
+};
 
   return (
     <Container sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)', padding: '20px', borderRadius: '10px', marginTop: '20px' }}>
