@@ -29,12 +29,19 @@ const Dashboard: React.FC = () => {
   };
 
   return (
-    <Container sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)', padding: '20px', borderRadius: '10px' }}>
+    <Container sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)', padding: '20px', borderRadius: '10px', display: 'flex', flexDirection: 'column', gap: '20px', marginTop: '20px' }}>
       <Typography variant="h4" sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)' }}>Dashboard</Typography>
-      <Button variant="contained" component={Link} to="/add-character-sheet" sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)' }}>Add Character Sheet</Button>
+      <Button 
+  variant="contained" 
+  component={Link} 
+  to="/add-character-sheet" 
+  sx={{ backgroundColor: 'purple', alignSelf: 'flex-start' }}
+>
+  Add Character Sheet
+</Button>
       <List>
         {characterSheets.map(sheet => (
-          <ListItem key={sheet.id} sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)' }}>
+          <ListItem key={sheet.id} sx={{ backgroundColor: 'rgba(173, 216, 230, 0.8)', marginBottom: '10px' }}>
             <ListItemText
               primary={<Link to={`/character-sheet/${sheet.id}`}>{sheet.character_name}</Link>}
             />
